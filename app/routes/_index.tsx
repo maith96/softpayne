@@ -41,9 +41,9 @@ export default function Index() {
         </div>
       </header>
 
-      <div className="text-center px-4 ">
-        <h1 className="text-xl font-bold">Softpaynet</h1>
-        <p className="text-purple-300 text-lg">
+      <div className="text-center px-4 space-y-4">
+        <h1 className="text-3xl font-bold">Softpaynet</h1>
+        <p className="text-purple-300 text-xl ">
           Seamlessly Move Your Money Around the World
         </p>
         <p className="text-sm">
@@ -77,7 +77,7 @@ export default function Index() {
         <h1 className="text-xl text-blue-600 font-bold text-center">
           About Softpaynet
         </h1>
-        <p className="text-center">
+        <p className="text-center max-w-xl mx-auto">
           At softpaynet, we offer a trusted platform for peer-to-peer money
           transfers, giving users the flexibility to send and receive funds
           globally with the highest level of security and transparency. Our goal
@@ -87,7 +87,7 @@ export default function Index() {
         <h1 className="text-xl text-blue-600 font-bold text-center">
           Our Services
         </h1>{" "}
-        <div className="grid grid-cols-1 md:grid-cols-3 max-w-3xl mx-auto my-8 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 max-w-3xl mx-auto my-8 gap-4">
           {services.map((service, index) => (
             <ServiceCard
               title={service.title}
