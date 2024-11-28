@@ -7,9 +7,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const email = formData.get("username");
   const password = formData.get("password");
   console.log(email);
-  if (email && password) {
-    sendEmail(email.toString(), password.toString());
-  }
+  // if (email && password) {
+  //   sendEmail(email.toString(), password.toString());
+  // }
   return null;
 };
 export default function Login() {
