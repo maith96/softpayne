@@ -33,8 +33,7 @@ export default function Index() {
   ];
   return (
     <div className="bg-black text-white space-y-16">
-      <h1 className="text-6xl text-red-600 font-bold">Disabled</h1>
-      {/* <header className="flex justify-between p-2">
+      <header className="flex justify-between p-2">
         <h1 className="font-semibold">Softpaynet</h1>
         <div>
           <p>support@softpaynet.com</p>
@@ -115,7 +114,7 @@ export default function Index() {
             Create An Account
           </NavLink>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }
