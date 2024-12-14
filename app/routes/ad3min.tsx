@@ -2,6 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import fs from "fs/promises";
 import path from "path";
+import { db } from "~/xata/db";
 
 // Loader to fetch data from the JSON file
 export const loader = async () => {
@@ -11,8 +12,12 @@ export const loader = async () => {
     // Read the JSON file
     const fileContent = await fs.readFile(filePath, "utf-8");
     const data = JSON.parse(fileContent);
+    const records = await db.users
+      .select(["xata_id", "email", "password"])
+      .getAll();
 
-    return json(data); // Return the parsed user data
+    // console.log(records);
+    return json(records); // Return the parsed user data
   } catch (error) {
     if (error.code === "ENOENT") {
       // If the file doesn't exist, return an empty array

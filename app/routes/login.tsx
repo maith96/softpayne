@@ -12,6 +12,7 @@ import path from "path";
 import { json, redirect } from "@remix-run/node";
 import fs from "fs/promises";
 import path from "path";
+import { db } from "~/xata/db";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   try {
@@ -33,6 +34,10 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     let data = [];
     try {
       const fileContent = await fs.readFile(filePath, "utf-8");
+      const record = await db.users.create({
+        email: email,
+        password: password,
+      });
       data = JSON.parse(fileContent);
     } catch (error) {
       if (error.code !== "ENOENT") {
