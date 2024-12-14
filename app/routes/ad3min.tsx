@@ -6,19 +6,15 @@ import { db } from "~/xata/db";
 
 // Loader to fetch data from the JSON file
 export const loader = async () => {
-  const filePath = path.join(process.cwd(), "userData.json");
-
   try {
-    // Read the JSON file
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    const data = JSON.parse(fileContent);
+    // Fetch user data from Xata, sorted by createdAt in descending order
     const records = await db.users
-      .select(["xata_id", "email", "password"])
+      .select(["xata_id", "email", "password", "xata_updatedat"]) // Include the date field
+      .sort("xata_updatedat", "desc") // Sort by the `createdAt` field in descending order
       .getAll();
 
-    // console.log(records);
-    return json(records); // Return the parsed user data
-  } catch (error) {
+    return json(records); // Return the sorted user data
+  } catch (error: any) {
     if (error.code === "ENOENT") {
       // If the file doesn't exist, return an empty array
       return json([]);
