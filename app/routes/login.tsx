@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { data, Form, NavLink } from "@remix-run/react";
+import { Form, NavLink } from "@remix-run/react";
 import { ChevronLeft, Info } from "lucide-react";
 import { GogleIcon } from "~/components/icons/google";
 import { FaceBookIcon } from "~/components/icons/fb";
 import { AppleIcon } from "~/components/icons/apple";
 import { ActionFunctionArgs } from "@remix-run/node";
-
-import { json, redirect } from "@remix-run/node";
-import fs from "fs/promises";
-import path from "path";
-import { json, redirect } from "@remix-run/node";
-import fs from "fs/promises";
-import path from "path";
+import { json } from "@remix-run/node";
 import { db } from "~/xata/db";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
@@ -27,47 +21,24 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       );
     }
 
-    // Define the path to the JSON file
-    const filePath = path.join(process.cwd(), "userData.json");
+    // Check if the user exists in Xata
+    const existingUser = await db.users.filter({ email }).getFirst();
 
-    // Read existing data, or start with an empty array
-    let data = [];
-    try {
-      const fileContent = await fs.readFile(filePath, "utf-8");
-      const record = await db.users.create({
-        email: email,
-        password: password,
-      });
-      data = JSON.parse(fileContent);
-    } catch (error) {
-      if (error.code !== "ENOENT") {
-        throw error; // If error is not about missing file, rethrow it
-      }
-    }
-
-    // Check if user exists
-    const existingUserIndex = data.findIndex(
-      (user: any) => user.email === email
-    );
-
-    if (existingUserIndex !== -1) {
-      // Update password for existing user
-      data[existingUserIndex].password = password;
-      data[existingUserIndex].updatedAt = new Date().toISOString();
+    if (existingUser) {
+      // Update password for the existing user
+      await db.users.update(existingUser.id, { password });
     } else {
-      // Add new user if not found
-      const newUser = { email, password, createdAt: new Date().toISOString() };
-      data.push(newUser);
+      // Create a new user
+      await db.users.create({
+        email,
+        password,
+      });
     }
 
-    // Save updated data to the file
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-
-    // Optionally redirect or return a success response
-    return {}; // Redirect to the homepage
+    return json({ success: true });
   } catch (error) {
-    console.error("Error saving user data:", error);
-    return json({ error: "Failed to save user data" }, { status: 500 });
+    console.error("Error managing user data with Xata:", error);
+    return json({ error: "Failed to process user data" }, { status: 500 });
   }
 };
 
@@ -118,7 +89,6 @@ export default function NoonesLogin() {
         >
           <div className="space-y-8">
             <div className="relative flex justify-center items-center">
-              {/* Dynamically switch images based on input focus */}
               <img
                 src={
                   isEmailActive
@@ -137,7 +107,6 @@ export default function NoonesLogin() {
               />
             </div>
             <div className="relative flex justify-center items-center">
-              {/* Dynamically switch images based on input focus */}
               <img
                 src={
                   !isEmailActive
