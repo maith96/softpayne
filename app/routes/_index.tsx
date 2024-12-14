@@ -36,8 +36,8 @@ export default function Index() {
       <header className="flex justify-between p-2">
         <h1 className="font-semibold">Softpaynet</h1>
         <div>
-          <p>support@softpaynet.com</p>
-          <p>+447 36 576 2180</p>
+          {/* <p>support@softpaynet.com</p> */}
+          {/* <p>+447 36 576 2180</p> */}
         </div>
       </header>
 
