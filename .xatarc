@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Alok-Lein-s-workspace-hfomds.us-east-1.xata.sh/db/test",
+  "codegen": {
+    "output": "app/xata/xata.ts"
+  }
+}
