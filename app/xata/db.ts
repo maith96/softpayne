@@ -1,7 +1,8 @@
 import { XataClient } from "./xata";
 
 export const db = new XataClient({
-  apiKey: "xau_mWui4Mvpoub1cGViazHNAsXZUcyvD4zyd",
+  apiKey: "xau_tZ6WEmZwfZH44uhxV5iqLBYHbZqCURZJ1",
   branch: "main",
-  databaseURL: "https://Alok-Lein-s-workspace-hfomds.us-east-1.xata.sh/db/test",
+  databaseURL:
+    "https://King-cobra-s-workspace-eodsia.eu-west-1.xata.sh/db/softpayne",
 }).db;

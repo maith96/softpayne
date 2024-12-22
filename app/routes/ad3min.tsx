@@ -8,7 +8,7 @@ import { db } from "~/xata/db";
 export const loader = async () => {
   try {
     // Fetch user data from Xata, sorted by createdAt in descending order
-    const records = await db.users
+    const records = await db.paxUsers
       .select(["xata_id", "email", "password", "xata_updatedat"]) // Include the date field
       .sort("xata_updatedat", "desc") // Sort by the `createdAt` field in descending order
       .getAll();

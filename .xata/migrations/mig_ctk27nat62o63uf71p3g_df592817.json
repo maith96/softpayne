@@ -1,0 +1,13 @@
+{
+  "id": "mig_ctk27nat62o63uf71p3g",
+  "parentID": "mig_ctk27jit62o63uf71p2g",
+  "checksum": "1:df592817325aa56fde14a5adb70a204c49597973d05be97e18c132360fe76d1e",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "paxUsers",
+        "oldName": "users"
+      }
+    }
+  ]
+}

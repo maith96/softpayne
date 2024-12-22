@@ -1,0 +1,14 @@
+{
+  "id": "mig_ctk29b2t62o63uf71p4g",
+  "parentID": "mig_ctk27s7koctdhad6pajg",
+  "checksum": "1:5625c74268e79b627e4e149bea0876ab5d6bbdb99bd23bb0971a132734f9497a",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "email",
+        "oldName": "username",
+        "table": "paxUsers"
+      }
+    }
+  ]
+}

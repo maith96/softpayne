@@ -1,5 +1,5 @@
 {
-  "databaseURL": "https://Alok-Lein-s-workspace-hfomds.us-east-1.xata.sh/db/test",
+  "databaseURL": "https://King-cobra-s-workspace-eodsia.eu-west-1.xata.sh/db/softpayne",
   "codegen": {
     "output": "app/xata/xata.ts"
   }

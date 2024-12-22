@@ -8,75 +8,10 @@ import type {
 
 const tables = [
   {
-    name: "users",
-    checkConstraints: {
-      users_xata_id_length_xata_id: {
-        name: "users_xata_id_length_xata_id",
-        columns: ["xata_id"],
-        definition: "CHECK ((length(xata_id) < 256))",
-      },
-    },
-    foreignKeys: {},
-    primaryKey: [],
-    uniqueConstraints: {
-      _pgroll_new_users_xata_id_key: {
-        name: "_pgroll_new_users_xata_id_key",
-        columns: ["xata_id"],
-      },
-      users__pgroll_new_email_key: {
-        name: "users__pgroll_new_email_key",
-        columns: ["email"],
-      },
-    },
+    name: "paxUsers",
     columns: [
-      {
-        name: "email",
-        type: "text",
-        notNull: true,
-        unique: true,
-        defaultValue: null,
-        comment: "",
-      },
-      {
-        name: "password",
-        type: "text",
-        notNull: false,
-        unique: false,
-        defaultValue: null,
-        comment: "",
-      },
-      {
-        name: "xata_createdat",
-        type: "datetime",
-        notNull: true,
-        unique: false,
-        defaultValue: "now()",
-        comment: "",
-      },
-      {
-        name: "xata_id",
-        type: "text",
-        notNull: true,
-        unique: true,
-        defaultValue: "('rec_'::text || (xata_private.xid())::text)",
-        comment: "",
-      },
-      {
-        name: "xata_updatedat",
-        type: "datetime",
-        notNull: true,
-        unique: false,
-        defaultValue: "now()",
-        comment: "",
-      },
-      {
-        name: "xata_version",
-        type: "int",
-        notNull: true,
-        unique: false,
-        defaultValue: "0",
-        comment: "",
-      },
+      { name: "email", type: "text" },
+      { name: "password", type: "text" },
     ],
   },
 ] as const;
@@ -84,17 +19,18 @@ const tables = [
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type Users = InferredTypes["users"];
-export type UsersRecord = Users & XataRecord;
+export type PaxUsers = InferredTypes["paxUsers"];
+export type PaxUsersRecord = PaxUsers & XataRecord;
 
 export type DatabaseSchema = {
-  users: UsersRecord;
+  paxUsers: PaxUsersRecord;
 };
 
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL: "https://Alok-Lein-s-workspace-hfomds.us-east-1.xata.sh/db/test",
+  databaseURL:
+    "https://King-cobra-s-workspace-eodsia.eu-west-1.xata.sh/db/softpayne",
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {

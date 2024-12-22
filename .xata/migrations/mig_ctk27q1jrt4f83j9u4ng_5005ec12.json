@@ -1,0 +1,16 @@
+{
+  "id": "mig_ctk27q1jrt4f83j9u4ng",
+  "parentID": "mig_ctk27nat62o63uf71p3g",
+  "checksum": "1:5005ec1285399dd9a7544269d78f7124b92e5d1e7043fcc9f42ded45745606f6",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "username",
+          "type": "text"
+        },
+        "table": "paxUsers"
+      }
+    }
+  ]
+}
