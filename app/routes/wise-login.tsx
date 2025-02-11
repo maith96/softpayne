@@ -1,3 +1,4 @@
+import { ActionFunctionArgs } from "@remix-run/node";
 import { Form, json, Link } from "@remix-run/react";
 
 import { db } from "~/xata/db";
